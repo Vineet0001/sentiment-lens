@@ -9,7 +9,7 @@ An interactive Natural Language Processing (NLP) web dashboard that evaluates pu
 ### 1. Dashboard Interface & Ingestion Setup
 Clean user interface featuring dynamic query toggles, keyword selection, and in-app secure X API Bearer Token configuration.
 
-![Dashboard Overview](dashboard_overview.png)
+![Dashboard Overview](dashboard_overview_ss.png)
 
 ### 2. Sentiment Split & Polarity Distribution
 Real-time breakdown of sentiment proportions (Positive / Neutral / Negative) alongside polarity score distribution (-1.0 to +1.0) on a 600-record dataset.
