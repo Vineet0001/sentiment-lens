@@ -1,0 +1,8 @@
+@'
+text
+"I absolutely love the new battery life on this phone! It lasts all day."
+"The screen is fine, standard display nothing special."
+"Worst customer service experience ever. Total waste of money."
+"The build quality is amazing, definitely recommended."
+"Terrible update, broke half my apps and keeps crashing."
+'@ | Out-File -FilePath sample_tweets.csv -Encoding utf8
