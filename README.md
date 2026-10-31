@@ -74,3 +74,49 @@ sentiment-lens/
 ├── keyword_frequency.png       # Keyword frequency & export screenshot
 ├── .gitignore                  # Git ignore rules
 └── README.md                   # Project documentation
+
+```
+## 💻 Local Setup & Execution
+
+### 1. Clone Repository
+```bash
+git clone [https://github.com/Vineet0001/sentiment-lens.git](https://github.com/Vineet0001/sentiment-lens.git)
+cd sentiment-lens
+```
+
+### 2. Create Virtual Environment
+```bash
+# Windows (PowerShell)
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+
+# Linux / macOS
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+python -m textblob.download_corpora
+```
+
+### 4. Run Application
+```bash
+streamlit run app.py
+```
+Open `http://localhost:8501` in your browser.
+
+---
+
+## 📖 How to Test
+
+1. **Offline CSV Mode:**
+   * Select **Upload CSV** in the sidebar.
+   * Upload `tweets_sentiment_dataset.CSV`.
+   * Click **Analyze** to process the 600 rows.
+2. **Live X Mode:**
+   * Select **Live from X** in the sidebar.
+   * Enter a query keyword (e.g., `iPhone`, `AccuKnox`).
+   * Enter your `X Bearer Token` in the sidebar password box.
+   * Click **Analyze**.
