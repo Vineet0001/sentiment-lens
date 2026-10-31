@@ -1,23 +1,28 @@
 # Sentiment Lens 📊
 
-An interactive Natural Language Processing (NLP) web dashboard that evaluates public opinion, brand perception, and topic sentiment from live X (formerly Twitter) streams and offline CSV datasets.
+An interactive Natural Language Processing (NLP) web dashboard that evaluates public opinion, brand perception, and social sentiment from live X (formerly Twitter) streams and offline batch CSV datasets.
 
 ---
 
 ## 📸 Visual Dashboard Proof
 
-### 1. Sentiment Split & Polarity Distribution
-Real-time breakdown of sentiment proportions (Positive / Neutral / Negative) alongside mathematical polarity score distributions (-1.0 to +1.0).
+### 1. Dashboard Interface & Ingestion Setup
+Clean user interface featuring dynamic query toggles, keyword selection, and in-app secure X API Bearer Token configuration.
 
 ![Dashboard Overview](dashboard_overview.png)
 
-### 2. Strongest Polarized Tweets
-Instant surface analysis of the most positive and most negative expressions detected across the dataset.
+### 2. Sentiment Split & Polarity Distribution
+Real-time breakdown of sentiment proportions (Positive / Neutral / Negative) alongside polarity score distribution (-1.0 to +1.0) on a 600-record dataset.
+
+![Sentiment Distribution](sentiment_distribution.png)
+
+### 3. Strongest Polarized Tweets
+Instant extraction and display of the highest-polarity positive and lowest-polarity negative statements.
 
 ![Strongest Tweets](strongest_tweets.png)
 
-### 3. Recurring Keyword Frequency Analysis
-Normalized term-frequency extraction filtering out domain noise to isolate key drivers behind positive and negative feedback.
+### 4. Recurring Keyword Frequency Analysis & Export
+Term-frequency ranking isolating key drivers behind customer praise and complaints, paired with a one-click CSV export for downstream reporting.
 
 ![Keyword Frequency](keyword_frequency.png)
 
@@ -26,18 +31,18 @@ Normalized term-frequency extraction filtering out domain noise to isolate key d
 ## 🚀 Key Features
 
 * **Dual-Ingestion Architecture:**
-  * **Live X Streaming:** Authenticates directly with the X API v2 via Tweepy using user-supplied Bearer Tokens or environment variables.
-  * **Offline Batch Ingestion:** Ingests local CSV datasets with automated UTF-8 BOM (`\ufeff`) sanitization and flexible column mapping (`text` or `tweet`).
+  * **Live X Streaming:** Ingests live English tweets via Tweepy and the X API v2 using direct in-app Bearer Token authentication or local environment variables.
+  * **Offline Batch Ingestion:** Analyzes local CSV datasets with automated UTF-8 BOM (`\ufeff`) stripping and flexible column mapping (`text` or `tweet`).
 * **Text Preprocessing & Sanitization Pipeline:** 
-  * Regex-driven cleaning engine removing URLs, mentions (`@user`), hashtags, retweet tags, and non-ASCII artifacts.
+  * Regex-driven cleaning engine removing URLs, mentions (`@user`), hashtags, retweet tags, and non-ASCII noise.
 * **Lexicon-Based Sentiment Engine:**
-  * Powered by TextBlob to extract semantic polarity scores.
-  * Employs an adjustable neutral-band threshold (`[-0.05, +0.05]`) to prevent ambiguous texts from skewing metrics.
+  * Uses TextBlob to calculate semantic polarity scores.
+  * Implements an adjustable neutral-band threshold (`[-0.05, +0.05]`) to prevent slight fluctuations from distorting sentiment metrics.
 * **Interactive Data Visualizations:**
-  * Dynamic Plotly donut charts rendering percentage splits.
-  * Polarity frequency histograms capturing emotional distribution.
-  * Horizontal bar charts ranking top recurring terms per sentiment class.
-* **CSV Export:** Download sanitized and analyzed results with assigned polarity scores directly from the interface.
+  * Dynamic Plotly donut charts for macro sentiment proportions.
+  * Polarity distribution histograms capturing score densities.
+  * Horizontal bar charts ranking top recurring positive and negative keywords.
+* **Data Export:** Direct download button to export processed and scored results as a clean CSV.
 
 ---
 
@@ -61,7 +66,11 @@ sentiment-lens/
 ├── app.py                      # Streamlit frontend & UI routing
 ├── sentiment_core.py           # Preprocessing, TextBlob scoring & Tweepy logic
 ├── requirements.txt            # Python dependencies
-├── sample_tweets.csv           # Initial lightweight test dataset
+├── sample_tweets.csv           # Lightweight initial test dataset
 ├── tweets_sentiment_dataset.CSV # 600-record comprehensive test dataset
-├── .gitignore                  # Git ignore rules (virtual environment, cache)
-└── README.md                   # Project documentation & visual architecture
+├── dashboard_overview.png      # UI landing & token setup screenshot
+├── sentiment_distribution.png  # Donut & histogram visualization screenshot
+├── strongest_tweets.png        # Polarized tweets screenshot
+├── keyword_frequency.png       # Keyword frequency & export screenshot
+├── .gitignore                  # Git ignore rules
+└── README.md                   # Project documentation
